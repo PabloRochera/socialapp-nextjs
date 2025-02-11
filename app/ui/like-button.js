@@ -9,6 +9,7 @@ export default ({post_id, user_id, isLikedInitial}) => {
 
     let [isLiked, setIsLiked] = useState(isLikedInitial);
 
+    // TODO: quitar de aqui
     function toogleLike() {
         if (isLiked) {
             removeLike(post_id, user_id);

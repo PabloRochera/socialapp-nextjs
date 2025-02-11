@@ -5,8 +5,8 @@ export default () => {
     return (
         <form action={createPost} className="flex flex-col gap-8">
             <ImageSelector />
-            <input type="submit" value="Publicar" />
             <input name="content" className="text-black" required/>
+            <input className="rounded bg-teal-800 p-2" type="submit" value="Publicar" />
         </form>
     )
 }

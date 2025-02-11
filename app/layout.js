@@ -26,11 +26,9 @@ export default async function RootLayout({ children }) {
   if (!session) {
     return (
       <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased flex`}
-      >
-        <a href="/auth/login">Logueate fistro</a>
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased flex flex-col gap-4 p-8`}>
         <Landing />
+        <p><a href="/auth/login" className="rounded bg-teal-800 p-2">Log in</a></p>
       </body>
       </html>
     )
@@ -38,13 +36,11 @@ export default async function RootLayout({ children }) {
 
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased flex`}
-      >
-        <h1>{session.user.name}</h1>
-        <a href="/auth/logout">Deslogueate fistro</a>
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased flex`}>
         <NavBar></NavBar>
-        {children}
+        <div className="p-8 grow flex justify-center align-center">
+          {children}
+        </div>
       </body>
     </html>
   );
