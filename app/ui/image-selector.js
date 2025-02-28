@@ -1,20 +1,25 @@
+// app/ui/image-selector.js
 'use client'
 
-import Image from "next/image"
+import Image from "next/image";
 import { useState } from "react";
 
-export default () => {
+export default function ImageSelector() {
+  const [previewSrc, setPreviewSrc] = useState("/preview.jpg");
 
-    const [inyaki, setInyaki] = useState("/preview.jpg");
-
-    function preview(ev){
-        setInyaki(URL.createObjectURL(ev.target.files[0]));
+  function handleChange(ev) {
+    const file = ev.target.files[0];
+    if (file) {
+      setPreviewSrc(URL.createObjectURL(file));
     }
+  }
 
-    return (<>
-        <label htmlFor="myfs">
-            <Image id="ima" src={inyaki} width={256} height={256} alt="preview" />
-        </label>
-        <input id="myfs" type="file" name="media" hidden onChange={preview} required/>
-    </>)
+  return (
+    <div className="flex flex-col items-center">
+      <label htmlFor="media">
+        <Image src={previewSrc} alt="Vista previa" width={256} height={256} className="rounded" />
+      </label>
+      <input id="media" type="file" name="media" onChange={handleChange} required className="hidden" />
+    </div>
+  );
 }

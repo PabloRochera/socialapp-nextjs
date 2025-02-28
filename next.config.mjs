@@ -1,12 +1,24 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    images: {
-        domains: [
-            'wznempxaasdpiy6c.public.blob.vercel-storage.com',
-            's.gravatar.com',
-            'lh3.googleusercontent.com'
-        ]
-    }
+  experimental: {
+    appDir: true,
+  },
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 's.gravatar.com',
+        port: '',
+        pathname: '/**'
+      },
+      {
+        protocol: 'https',
+        hostname: 'xtn3ssr7fhmmc7d1.public.blob.vercel-storage.com',
+        port: '',
+        pathname: '/**'
+      }
+    ]
+  }
 };
 
 export default nextConfig;
